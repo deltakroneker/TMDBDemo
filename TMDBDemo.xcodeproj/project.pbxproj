@@ -25,7 +25,10 @@
 		D2AB29742AD008890032B697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB29732AD008890032B697 /* AppDelegate.swift */; };
 		D2AB29762AD008A30032B697 /* NavigationControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB29752AD008A30032B697 /* NavigationControllerRouter.swift */; };
 		D2AB29782AD008CB0032B697 /* Dispatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB29772AD008CB0032B697 /* Dispatching.swift */; };
-		D2AB297B2AD00FFC0032B697 /* TopRatedScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB297A2AD00FFC0032B697 /* TopRatedScreenViewModel.swift */; };
+		D2AB297B2AD00FFC0032B697 /* TopRatedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB297A2AD00FFC0032B697 /* TopRatedViewModel.swift */; };
+		D2AB29802AD013F20032B697 /* TopRatedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB297F2AD013F20032B697 /* TopRatedView.swift */; };
+		D2AB29822AD018320032B697 /* PreviewContentMovieLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB29812AD018320032B697 /* PreviewContentMovieLoader.swift */; };
+		D2AB29852AD021890032B697 /* MainQueueDispatchDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB29842AD021890032B697 /* MainQueueDispatchDecorator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,13 +47,16 @@
 		D2AB29662ACFF8C50032B697 /* AuthenticatedHTTPClientDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticatedHTTPClientDecorator.swift; sourceTree = "<group>"; };
 		D2AB29682ACFFB7E0032B697 /* URLSessionHTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionHTTPClient.swift; sourceTree = "<group>"; };
 		D2AB296B2ACFFC5C0032B697 /* secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = secrets.xcconfig; sourceTree = "<group>"; };
-		D2AB296C2ACFFE230032B697 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		D2AB296C2ACFFE230032B697 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2AB296E2AD006F60032B697 /* ViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerFactory.swift; sourceTree = "<group>"; };
 		D2AB29712AD0079A0032B697 /* iOSSwiftUIViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUIViewControllerFactory.swift; sourceTree = "<group>"; };
 		D2AB29732AD008890032B697 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2AB29752AD008A30032B697 /* NavigationControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouter.swift; sourceTree = "<group>"; };
 		D2AB29772AD008CB0032B697 /* Dispatching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatching.swift; sourceTree = "<group>"; };
-		D2AB297A2AD00FFC0032B697 /* TopRatedScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedScreenViewModel.swift; sourceTree = "<group>"; };
+		D2AB297A2AD00FFC0032B697 /* TopRatedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedViewModel.swift; sourceTree = "<group>"; };
+		D2AB297F2AD013F20032B697 /* TopRatedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedView.swift; sourceTree = "<group>"; };
+		D2AB29812AD018320032B697 /* PreviewContentMovieLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContentMovieLoader.swift; sourceTree = "<group>"; };
+		D2AB29842AD021890032B697 /* MainQueueDispatchDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainQueueDispatchDecorator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,13 +89,12 @@
 		D2AB293E2ACFE2FB0032B697 /* TMDBDemo */ = {
 			isa = PBXGroup;
 			children = (
-				D2AB296C2ACFFE230032B697 /* Info.plist */,
 				D2AB296A2ACFFC100032B697 /* Main */,
 				D2AB294D2ACFE88B0032B697 /* Domain */,
 				D2AB29542ACFEDCC0032B697 /* Application */,
 				D2AB29572ACFEE0A0032B697 /* Infrastructure */,
-				D2AB29432ACFE2FC0032B697 /* Assets.xcassets */,
 				D2AB29452ACFE2FC0032B697 /* Preview Content */,
+				D2AB29432ACFE2FC0032B697 /* Assets.xcassets */,
 			);
 			path = TMDBDemo;
 			sourceTree = "<group>";
@@ -98,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AB29462ACFE2FC0032B697 /* Preview Assets.xcassets */,
+				D2AB29812AD018320032B697 /* PreviewContentMovieLoader.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -125,7 +131,8 @@
 		D2AB29572ACFEE0A0032B697 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
-				D2AB29682ACFFB7E0032B697 /* URLSessionHTTPClient.swift */,
+				D2AB29862AD022690032B697 /* HTTP */,
+				D2AB297E2AD013C40032B697 /* Views */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -156,6 +163,7 @@
 			children = (
 				D2AB29702AD007830032B697 /* Composition root */,
 				D2AB296D2AD006EB0032B697 /* Routing */,
+				D2AB296C2ACFFE230032B697 /* Info.plist */,
 				D2AB296B2ACFFC5C0032B697 /* secrets.xcconfig */,
 			);
 			path = Main;
@@ -176,6 +184,7 @@
 			children = (
 				D2AB29732AD008890032B697 /* AppDelegate.swift */,
 				D2AB29712AD0079A0032B697 /* iOSSwiftUIViewControllerFactory.swift */,
+				D2AB29842AD021890032B697 /* MainQueueDispatchDecorator.swift */,
 			);
 			path = "Composition root";
 			sourceTree = "<group>";
@@ -183,9 +192,25 @@
 		D2AB29792AD00FB80032B697 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				D2AB297A2AD00FFC0032B697 /* TopRatedScreenViewModel.swift */,
+				D2AB297A2AD00FFC0032B697 /* TopRatedViewModel.swift */,
 			);
 			path = Presentation;
+			sourceTree = "<group>";
+		};
+		D2AB297E2AD013C40032B697 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D2AB297F2AD013F20032B697 /* TopRatedView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D2AB29862AD022690032B697 /* HTTP */ = {
+			isa = PBXGroup;
+			children = (
+				D2AB29682ACFFB7E0032B697 /* URLSessionHTTPClient.swift */,
+			);
+			path = HTTP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -258,11 +283,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2AB29822AD018320032B697 /* PreviewContentMovieLoader.swift in Sources */,
 				D2AB29512ACFE9380032B697 /* Genre.swift in Sources */,
 				D2AB29532ACFEB550032B697 /* PaginatedMovieLoader.swift in Sources */,
-				D2AB297B2AD00FFC0032B697 /* TopRatedScreenViewModel.swift in Sources */,
+				D2AB297B2AD00FFC0032B697 /* TopRatedViewModel.swift in Sources */,
 				D2AB29762AD008A30032B697 /* NavigationControllerRouter.swift in Sources */,
 				D2AB295F2ACFF1DC0032B697 /* TMDBMovieMapper.swift in Sources */,
+				D2AB29802AD013F20032B697 /* TopRatedView.swift in Sources */,
 				D2AB295B2ACFEF910032B697 /* HTTPClient.swift in Sources */,
 				D2AB29742AD008890032B697 /* AppDelegate.swift in Sources */,
 				D2AB294F2ACFE8980032B697 /* Movie.swift in Sources */,
@@ -272,6 +299,7 @@
 				D2AB29782AD008CB0032B697 /* Dispatching.swift in Sources */,
 				D2AB29672ACFF8C50032B697 /* AuthenticatedHTTPClientDecorator.swift in Sources */,
 				D2AB295D2ACFF0610032B697 /* TMDBRequestProvider.swift in Sources */,
+				D2AB29852AD021890032B697 /* MainQueueDispatchDecorator.swift in Sources */,
 				D2AB29722AD0079A0032B697 /* iOSSwiftUIViewControllerFactory.swift in Sources */,
 				D2AB29632ACFF4F10032B697 /* TMDBError.swift in Sources */,
 				D2AB29692ACFFB7E0032B697 /* URLSessionHTTPClient.swift in Sources */,
@@ -283,6 +311,7 @@
 /* Begin XCBuildConfiguration section */
 		D2AB29482ACFE2FC0032B697 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2AB296B2ACFFC5C0032B697 /* secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -343,6 +372,7 @@
 		};
 		D2AB29492ACFE2FC0032B697 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2AB296B2ACFFC5C0032B697 /* secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -406,7 +436,7 @@
 				DEVELOPMENT_TEAM = YK9KUM8896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TMDBDemo/Info.plist;
+				INFOPLIST_FILE = TMDBDemo/Main/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -436,7 +466,7 @@
 				DEVELOPMENT_TEAM = YK9KUM8896;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = TMDBDemo/Info.plist;
+				INFOPLIST_FILE = TMDBDemo/Main/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

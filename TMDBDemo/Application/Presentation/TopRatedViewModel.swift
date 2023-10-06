@@ -1,5 +1,5 @@
 //
-//  TopRatedScreenViewModel.swift
+//  TopRatedViewModel.swift
 //  TMDBDemo
 //
 //  Created by nikolamilic on 10/6/23.
@@ -8,10 +8,10 @@
 import Foundation
 import Combine
 
-final class TopRatedScreenViewModel: ObservableObject {
+final class TopRatedViewModel: ObservableObject {
     @Published var movies: [Movie]
     private var isLoadingNewPage: Bool = false
-    private var page = 0
+    private var page = 1
     private let loader: PaginatedMovieLoader
     private let movieTapAction: (Movie) -> Void
     private var bag = Set<AnyCancellable>()
@@ -21,10 +21,17 @@ final class TopRatedScreenViewModel: ObservableObject {
         self.loader = loader
         self.movieTapAction = movieTapAction
         
-        loadTopRatedMovies()
+        loadNextPage()
     }
     
-    func loadTopRatedMovies() {
+    func movieAppeared(_ movie: Movie) {
+        let thresholdIndex = movies.index(movies.endIndex, offsetBy: -1)
+        if movies[thresholdIndex] == movie {
+            loadNextPage()
+        }
+    }
+    
+    func loadNextPage() {
         guard !isLoadingNewPage else {
             return
         }

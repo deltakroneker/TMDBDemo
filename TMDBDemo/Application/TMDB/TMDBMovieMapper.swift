@@ -10,7 +10,9 @@ import Foundation
 struct TMDBMovieMapper {
     static func mapMovie(data: Data, response: HTTPURLResponse) throws -> [TMDBMovieDTO] {
         if (200..<300) ~= response.statusCode {
-            return (try JSONDecoder().decode(TMDBMovieContainerDTO.self, from: data)).movies
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            return (try decoder.decode(TMDBMovieContainerDTO.self, from: data)).results
         } else if response.statusCode == 401 {
             throw TMDBError.unauthorized
         } else {

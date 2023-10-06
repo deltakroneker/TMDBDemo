@@ -19,22 +19,7 @@ class AuthenticatedHTTPClientDecorator: HTTPClient {
     
     func publisher(request: URLRequest) -> AnyPublisher<(Data, HTTPURLResponse), Error> {
         var authenticatedRequest = request
-        if #available(iOS 16.0, *) {
-            authenticatedRequest.url?.append(queryItems: [URLQueryItem(name: "key", value: apiKey)])
-        } else {
-            authenticatedRequest.url?.appendQueryItem(name: "key", value: apiKey)
-        }
+        authenticatedRequest.setValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
         return httpClient.publisher(request: authenticatedRequest)
-    }
-}
-
-fileprivate extension URL {
-    mutating func appendQueryItem(name: String, value: String?) {
-        guard var urlComponents = URLComponents(string: absoluteString) else { return }
-        var queryItems: [URLQueryItem] = urlComponents.queryItems ??  []
-        let queryItem = URLQueryItem(name: name, value: value)
-        queryItems.append(queryItem)
-        urlComponents.queryItems = queryItems
-        self = urlComponents.url!
     }
 }
