@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		D2AB29402ACFE2FB0032B697 /* TMDBDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB293F2ACFE2FB0032B697 /* TMDBDemoApp.swift */; };
-		D2AB29422ACFE2FB0032B697 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB29412ACFE2FB0032B697 /* ContentView.swift */; };
 		D2AB29442ACFE2FC0032B697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AB29432ACFE2FC0032B697 /* Assets.xcassets */; };
 		D2AB29472ACFE2FC0032B697 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AB29462ACFE2FC0032B697 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +15,6 @@
 /* Begin PBXFileReference section */
 		D2AB293C2ACFE2FB0032B697 /* TMDBDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AB293F2ACFE2FB0032B697 /* TMDBDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBDemoApp.swift; sourceTree = "<group>"; };
-		D2AB29412ACFE2FB0032B697 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D2AB29432ACFE2FC0032B697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2AB29462ACFE2FC0032B697 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +50,6 @@
 			isa = PBXGroup;
 			children = (
 				D2AB293F2ACFE2FB0032B697 /* TMDBDemoApp.swift */,
-				D2AB29412ACFE2FB0032B697 /* ContentView.swift */,
 				D2AB29432ACFE2FC0032B697 /* Assets.xcassets */,
 				D2AB29452ACFE2FC0032B697 /* Preview Content */,
 			);
@@ -137,7 +134,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D2AB29422ACFE2FB0032B697 /* ContentView.swift in Sources */,
 				D2AB29402ACFE2FB0032B697 /* TMDBDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

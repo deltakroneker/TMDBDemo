@@ -11,7 +11,6 @@ import SwiftUI
 struct TMDBDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
         }
     }
 }
