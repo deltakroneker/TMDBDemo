@@ -25,6 +25,7 @@
 		D2AB29742AD008890032B697 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB29732AD008890032B697 /* AppDelegate.swift */; };
 		D2AB29762AD008A30032B697 /* NavigationControllerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB29752AD008A30032B697 /* NavigationControllerRouter.swift */; };
 		D2AB29782AD008CB0032B697 /* Dispatching.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB29772AD008CB0032B697 /* Dispatching.swift */; };
+		D2AB297B2AD00FFC0032B697 /* TopRatedScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB297A2AD00FFC0032B697 /* TopRatedScreenViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		D2AB29732AD008890032B697 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D2AB29752AD008A30032B697 /* NavigationControllerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouter.swift; sourceTree = "<group>"; };
 		D2AB29772AD008CB0032B697 /* Dispatching.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dispatching.swift; sourceTree = "<group>"; };
+		D2AB297A2AD00FFC0032B697 /* TopRatedScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedScreenViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 		D2AB29542ACFEDCC0032B697 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				D2AB29792AD00FB80032B697 /* Presentation */,
 				D2AB29652ACFF8B40032B697 /* HTTP */,
 				D2AB29642ACFF5DC0032B697 /* TMDB */,
 			);
@@ -175,6 +178,14 @@
 				D2AB29712AD0079A0032B697 /* iOSSwiftUIViewControllerFactory.swift */,
 			);
 			path = "Composition root";
+			sourceTree = "<group>";
+		};
+		D2AB29792AD00FB80032B697 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				D2AB297A2AD00FFC0032B697 /* TopRatedScreenViewModel.swift */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -249,6 +260,7 @@
 			files = (
 				D2AB29512ACFE9380032B697 /* Genre.swift in Sources */,
 				D2AB29532ACFEB550032B697 /* PaginatedMovieLoader.swift in Sources */,
+				D2AB297B2AD00FFC0032B697 /* TopRatedScreenViewModel.swift in Sources */,
 				D2AB29762AD008A30032B697 /* NavigationControllerRouter.swift in Sources */,
 				D2AB295F2ACFF1DC0032B697 /* TMDBMovieMapper.swift in Sources */,
 				D2AB295B2ACFEF910032B697 /* HTTPClient.swift in Sources */,
