@@ -71,10 +71,10 @@
 		D2AB293E2ACFE2FB0032B697 /* TMDBDemo */ = {
 			isa = PBXGroup;
 			children = (
+				D2AB296A2ACFFC100032B697 /* Main */,
 				D2AB294D2ACFE88B0032B697 /* Domain */,
 				D2AB29542ACFEDCC0032B697 /* Application */,
 				D2AB29572ACFEE0A0032B697 /* Infrastructure */,
-				D2AB293F2ACFE2FB0032B697 /* TMDBDemoApp.swift */,
 				D2AB29432ACFE2FC0032B697 /* Assets.xcassets */,
 				D2AB29452ACFE2FC0032B697 /* Preview Content */,
 			);
@@ -135,6 +135,14 @@
 				D2AB29662ACFF8C50032B697 /* AuthenticatedHTTPClientDecorator.swift */,
 			);
 			path = HTTP;
+			sourceTree = "<group>";
+		};
+		D2AB296A2ACFFC100032B697 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D2AB293F2ACFE2FB0032B697 /* TMDBDemoApp.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
