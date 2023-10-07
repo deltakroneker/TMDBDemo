@@ -11,6 +11,7 @@ struct MoviePosterViewModel {
     let id: Int
     let title: String
     let subtitle: String
+    let genreDescription: String
     let posterImageUrlPath: String
     
     var posterImageURL: URL? {
@@ -21,6 +22,7 @@ struct MoviePosterViewModel {
         self.id = movie.id
         self.title = movie.name
         self.subtitle = "⭐️ \(movie.rating)"
+        self.genreDescription = movie.genres.map({ $0.name }).joined(separator: ", ")
         self.posterImageUrlPath = movie.poster
     }
 }
