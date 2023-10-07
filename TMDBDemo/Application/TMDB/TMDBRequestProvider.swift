@@ -12,12 +12,13 @@ typealias Page = Int
 enum TMDBRequestProvider {
     case topRated(p: Page)
     
-    private var baseURL: String { "https://api.themoviedb.org/3" }
+    private static let baseURL = "https://api.themoviedb.org/3"
+    private static let imageBaseURL = "https://image.tmdb.org/t/p"
     
     var path: String {
         switch self {
         case .topRated(let p):
-            return baseURL + "/movie/top_rated?language=en-US&page=\(p)"
+            return TMDBRequestProvider.baseURL + "/movie/top_rated?language=en-US&page=\(p)"
         }
     }
     
@@ -26,5 +27,9 @@ enum TMDBRequestProvider {
             preconditionFailure("URL is not valid")
         }
         return URLRequest(url: url)
+    }
+    
+    static func posterUrl(for posterPath: String, customWidth: Int) -> URL? {
+        return URL(string: "\(TMDBRequestProvider.imageBaseURL)/w\(customWidth)\(posterPath)")
     }
 }

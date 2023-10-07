@@ -7,21 +7,25 @@
 
 import SwiftUI
 import Combine
+import Kingfisher
 
 struct TopRatedView: View {
     @ObservedObject var viewModel: TopRatedViewModel
     
+    private let twoColumnGridLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    
     var body: some View {
         NavigationView{
             ScrollView {
-                LazyVStack {
+                LazyVGrid(columns: twoColumnGridLayout, spacing: 10) {
                     ForEach(viewModel.movies, id: \.self) { movie in
-                        Text(movie.name)
-                            .onAppear(){
+                        MoviePosterView(viewModel: MoviePosterViewModel(movie: movie))
+                            .onAppear {
                                 viewModel.movieAppeared(movie)
                             }
                     }
                 }
+                .padding(10)
             }
         }
     }
@@ -30,15 +34,5 @@ struct TopRatedView: View {
 struct TopRatedView_Previews: PreviewProvider {
     static var previews: some View {
         TopRatedView(viewModel: TopRatedViewModel(loader: PreviewContentMovieLoader(), movieTapAction: { _ in }))
-    }
-}
-
-extension Movie: Hashable {
-    static func == (lhs: Movie, rhs: Movie) -> Bool {
-        return lhs.id == rhs.id
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(self.id)
     }
 }
