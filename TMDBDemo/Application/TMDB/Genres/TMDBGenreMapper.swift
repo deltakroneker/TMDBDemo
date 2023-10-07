@@ -1,18 +1,18 @@
 //
-//  MovieMapper.swift
+//  TMDBGenreMapper.swift
 //  TMDBDemo
 //
-//  Created by nikolamilic on 10/6/23.
+//  Created by nikolamilic on 10/7/23.
 //
 
 import Foundation
 
-struct TMDBMovieMapper {
-    static func mapMovie(data: Data, response: HTTPURLResponse) throws -> [TMDBMovieDTO] {
+struct TMDBGenreMapper {
+    static func mapGenres(data: Data, response: HTTPURLResponse) throws -> [TMDBGenreDTO] {
         if (200..<300) ~= response.statusCode {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            return (try decoder.decode(TMDBMovieContainerDTO.self, from: data)).results
+            return (try decoder.decode(TMDBGenreContainerDTO.self, from: data)).genres
         } else if response.statusCode == 401 {
             throw TMDBError.unauthorized
         } else {

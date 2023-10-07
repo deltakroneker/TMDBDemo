@@ -11,6 +11,7 @@ typealias Page = Int
 
 enum TMDBRequestProvider {
     case topRated(p: Page)
+    case genres
     
     private static let baseURL = "https://api.themoviedb.org/3"
     private static let imageBaseURL = "https://image.tmdb.org/t/p"
@@ -19,6 +20,8 @@ enum TMDBRequestProvider {
         switch self {
         case .topRated(let p):
             return TMDBRequestProvider.baseURL + "/movie/top_rated?language=en-US&page=\(p)"
+        case .genres:
+            return TMDBRequestProvider.baseURL + "/genre/movie/list"
         }
     }
     
