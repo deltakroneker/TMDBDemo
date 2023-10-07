@@ -28,6 +28,9 @@ struct TopRatedView: View {
                 .padding(10)
             }
         }
+        .onAppear {
+            viewModel.loadNextPage()
+        }
     }
 }
 

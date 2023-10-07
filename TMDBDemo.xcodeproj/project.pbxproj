@@ -13,6 +13,7 @@
 		D2861D2A2AD14C78009252AE /* MovieExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2861D292AD14C78009252AE /* MovieExt.swift */; };
 		D2861D3A2AD17780009252AE /* NavigationControllerRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2861D392AD17780009252AE /* NavigationControllerRouterTest.swift */; };
 		D2861D3C2AD17BA7009252AE /* iOSSwiftUIViewControllerFactoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2861D3B2AD17BA7009252AE /* iOSSwiftUIViewControllerFactoryTest.swift */; };
+		D2861D3F2AD17D5D009252AE /* TopRatedViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2861D3E2AD17D5D009252AE /* TopRatedViewModelTest.swift */; };
 		D2AB29442ACFE2FC0032B697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AB29432ACFE2FC0032B697 /* Assets.xcassets */; };
 		D2AB29472ACFE2FC0032B697 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AB29462ACFE2FC0032B697 /* Preview Assets.xcassets */; };
 		D2AB294F2ACFE8980032B697 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB294E2ACFE8980032B697 /* Movie.swift */; };
@@ -56,6 +57,7 @@
 		D2861D2F2AD1774E009252AE /* TMDBDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDBDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2861D392AD17780009252AE /* NavigationControllerRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouterTest.swift; sourceTree = "<group>"; };
 		D2861D3B2AD17BA7009252AE /* iOSSwiftUIViewControllerFactoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iOSSwiftUIViewControllerFactoryTest.swift; sourceTree = "<group>"; };
+		D2861D3E2AD17D5D009252AE /* TopRatedViewModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopRatedViewModelTest.swift; sourceTree = "<group>"; };
 		D2AB293C2ACFE2FB0032B697 /* TMDBDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AB29432ACFE2FC0032B697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2AB29462ACFE2FC0032B697 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				D2861D382AD1775C009252AE /* Main */,
+				D2861D3D2AD17D4D009252AE /* Application */,
 			);
 			path = TMDBDemoTests;
 			sourceTree = "<group>";
@@ -126,6 +129,14 @@
 				D2861D3B2AD17BA7009252AE /* iOSSwiftUIViewControllerFactoryTest.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		D2861D3D2AD17D4D009252AE /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D2861D3E2AD17D5D009252AE /* TopRatedViewModelTest.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 		D2AB29332ACFE2FB0032B697 = {
@@ -383,6 +394,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D2861D3A2AD17780009252AE /* NavigationControllerRouterTest.swift in Sources */,
+				D2861D3F2AD17D5D009252AE /* TopRatedViewModelTest.swift in Sources */,
 				D2861D3C2AD17BA7009252AE /* iOSSwiftUIViewControllerFactoryTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -10,7 +10,7 @@ import Combine
 
 final class TopRatedViewModel: ObservableObject {
     @Published var movies: [Movie]
-    private var isLoadingNewPage: Bool = false
+    var isLoadingNewPage: Bool = false
     private var page = 1
     private let loader: PaginatedMovieLoader
     private let movieTapAction: (Movie) -> Void
@@ -19,9 +19,7 @@ final class TopRatedViewModel: ObservableObject {
     init(loader: PaginatedMovieLoader, movieTapAction: @escaping (Movie) -> Void) {
         self.movies = []
         self.loader = loader
-        self.movieTapAction = movieTapAction
-        
-        loadNextPage()
+        self.movieTapAction = movieTapAction        
     }
     
     func movieAppeared(_ movie: Movie) {
@@ -40,12 +38,7 @@ final class TopRatedViewModel: ObservableObject {
         loader.load(page: page)
             .sink(receiveCompletion: { [weak self] completion in
                 guard let self = self else { return }
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let err):
-                    print(err.localizedDescription)
-                }
+                // TODO: Handle loader error cases
                 self.page = self.page + 1
                 self.isLoadingNewPage = false
             }, receiveValue: { [weak self] newMovies in
