@@ -11,6 +11,7 @@
 		D2861D252AD140C2009252AE /* MoviePosterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2861D242AD140C2009252AE /* MoviePosterViewModel.swift */; };
 		D2861D282AD14647009252AE /* KingfisherExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2861D272AD14647009252AE /* KingfisherExt.swift */; };
 		D2861D2A2AD14C78009252AE /* MovieExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2861D292AD14C78009252AE /* MovieExt.swift */; };
+		D2861D3A2AD17780009252AE /* NavigationControllerRouterTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2861D392AD17780009252AE /* NavigationControllerRouterTest.swift */; };
 		D2AB29442ACFE2FC0032B697 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AB29432ACFE2FC0032B697 /* Assets.xcassets */; };
 		D2AB29472ACFE2FC0032B697 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2AB29462ACFE2FC0032B697 /* Preview Assets.xcassets */; };
 		D2AB294F2ACFE8980032B697 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2AB294E2ACFE8980032B697 /* Movie.swift */; };
@@ -36,11 +37,23 @@
 		D2AB298B2AD136CC0032B697 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D2AB298A2AD136CC0032B697 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		D2861D332AD1774E009252AE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D2AB29342ACFE2FB0032B697 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AB293B2ACFE2FB0032B697;
+			remoteInfo = TMDBDemo;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		D2861D222AD137E6009252AE /* MoviePosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterView.swift; sourceTree = "<group>"; };
 		D2861D242AD140C2009252AE /* MoviePosterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviePosterViewModel.swift; sourceTree = "<group>"; };
 		D2861D272AD14647009252AE /* KingfisherExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KingfisherExt.swift; sourceTree = "<group>"; };
 		D2861D292AD14C78009252AE /* MovieExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieExt.swift; sourceTree = "<group>"; };
+		D2861D2F2AD1774E009252AE /* TMDBDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMDBDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2861D392AD17780009252AE /* NavigationControllerRouterTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationControllerRouterTest.swift; sourceTree = "<group>"; };
 		D2AB293C2ACFE2FB0032B697 /* TMDBDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMDBDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2AB29432ACFE2FC0032B697 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D2AB29462ACFE2FC0032B697 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -69,6 +82,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		D2861D2C2AD1774E009252AE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AB29392ACFE2FB0032B697 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -89,10 +109,27 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		D2861D302AD1774E009252AE /* TMDBDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				D2861D382AD1775C009252AE /* Main */,
+			);
+			path = TMDBDemoTests;
+			sourceTree = "<group>";
+		};
+		D2861D382AD1775C009252AE /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D2861D392AD17780009252AE /* NavigationControllerRouterTest.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
 		D2AB29332ACFE2FB0032B697 = {
 			isa = PBXGroup;
 			children = (
 				D2AB293E2ACFE2FB0032B697 /* TMDBDemo */,
+				D2861D302AD1774E009252AE /* TMDBDemoTests */,
 				D2AB293D2ACFE2FB0032B697 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -101,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				D2AB293C2ACFE2FB0032B697 /* TMDBDemo.app */,
+				D2861D2F2AD1774E009252AE /* TMDBDemoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -238,6 +276,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		D2861D2E2AD1774E009252AE /* TMDBDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D2861D372AD1774E009252AE /* Build configuration list for PBXNativeTarget "TMDBDemoTests" */;
+			buildPhases = (
+				D2861D2B2AD1774E009252AE /* Sources */,
+				D2861D2C2AD1774E009252AE /* Frameworks */,
+				D2861D2D2AD1774E009252AE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D2861D342AD1774E009252AE /* PBXTargetDependency */,
+			);
+			name = TMDBDemoTests;
+			productName = TMDBDemoTests;
+			productReference = D2861D2F2AD1774E009252AE /* TMDBDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D2AB293B2ACFE2FB0032B697 /* TMDBDemo */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D2AB294A2ACFE2FC0032B697 /* Build configuration list for PBXNativeTarget "TMDBDemo" */;
@@ -268,6 +324,10 @@
 				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
+					D2861D2E2AD1774E009252AE = {
+						CreatedOnToolsVersion = 14.2;
+						TestTargetID = D2AB293B2ACFE2FB0032B697;
+					};
 					D2AB293B2ACFE2FB0032B697 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -290,11 +350,19 @@
 			projectRoot = "";
 			targets = (
 				D2AB293B2ACFE2FB0032B697 /* TMDBDemo */,
+				D2861D2E2AD1774E009252AE /* TMDBDemoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		D2861D2D2AD1774E009252AE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AB293A2ACFE2FB0032B697 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -307,6 +375,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		D2861D2B2AD1774E009252AE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D2861D3A2AD17780009252AE /* NavigationControllerRouterTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2AB29382ACFE2FB0032B697 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -340,7 +416,51 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		D2861D342AD1774E009252AE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D2AB293B2ACFE2FB0032B697 /* TMDBDemo */;
+			targetProxy = D2861D332AD1774E009252AE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		D2861D352AD1774E009252AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YK9KUM8896;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.nikolamilic.TMDBDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TMDBDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TMDBDemo";
+			};
+			name = Debug;
+		};
+		D2861D362AD1774E009252AE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YK9KUM8896;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = xyz.nikolamilic.TMDBDemoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/TMDBDemo.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/TMDBDemo";
+			};
+			name = Release;
+		};
 		D2AB29482ACFE2FC0032B697 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D2AB296B2ACFFC5C0032B697 /* secrets.xcconfig */;
@@ -520,6 +640,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		D2861D372AD1774E009252AE /* Build configuration list for PBXNativeTarget "TMDBDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D2861D352AD1774E009252AE /* Debug */,
+				D2861D362AD1774E009252AE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		D2AB29372ACFE2FB0032B697 /* Build configuration list for PBXProject "TMDBDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
