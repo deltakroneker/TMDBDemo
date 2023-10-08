@@ -29,14 +29,9 @@ final class NavigationControllerRouter {
     }
     
     private func topRatedMoviesScreenMovieTapAction(_ movie: Movie) {
-        // TODO: Handle movie tap
         dispatchQueue.async(execute: DispatchWorkItem(block: {
-            let movieDetailsVC = self.factory.movieDetailsScreen(movie: movie, toggleFavouriteAction: self.toggleFavouriteAction)
+            let movieDetailsVC = self.factory.movieDetailsScreen(movie: movie)
             self.topRatedNavigationController.pushViewController(movieDetailsVC, animated: true)
         }))
-    }
-    
-    private func toggleFavouriteAction(_ movie: Movie) {
-        //TODO: Handle toggling favourite
     }
 }

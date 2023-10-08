@@ -9,5 +9,5 @@ import UIKit
 
 protocol ViewControllerFactory {
     func topRatedMoviesScreen(movieTapAction: @escaping (Movie) -> Void) -> UIViewController
-    func movieDetailsScreen(movie: Movie, toggleFavouriteAction: @escaping (Movie) -> Void) -> UIViewController
+    func movieDetailsScreen(movie: Movie) -> UIViewController
 }

@@ -76,7 +76,7 @@ final class NavigationControllerRouterTest: XCTestCase {
             return stubbedTopRatedMoviesVC ?? UIViewController()
         }
         
-        func movieDetailsScreen(movie: Movie, toggleFavouriteAction: @escaping (Movie) -> Void) -> UIViewController {
+        func movieDetailsScreen(movie: Movie) -> UIViewController {
             return stubbedMovieDetailsVC ?? UIViewController()
         }
     }
