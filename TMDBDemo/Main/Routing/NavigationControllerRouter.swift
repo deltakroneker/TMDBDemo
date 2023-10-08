@@ -9,17 +9,18 @@ import UIKit
 
 final class NavigationControllerRouter {
     private let tabBarController: UITabBarController
-    private let topRatedNavigationController = UINavigationController()
+    private let topRatedNavigationController: UINavigationController
     private let factory: ViewControllerFactory
     private let dispatchQueue: Dispatching
     
-    init(_ tabBarController: UITabBarController, factory: ViewControllerFactory, dispatchQueue: Dispatching = DispatchQueue.main) {
+    init(_ tabBarController: UITabBarController, topRatedNavigationController: UINavigationController = UINavigationController(), factory: ViewControllerFactory, dispatchQueue: Dispatching = DispatchQueue.main) {
         self.tabBarController = tabBarController
+        self.topRatedNavigationController = topRatedNavigationController
         self.factory = factory
         self.dispatchQueue = dispatchQueue
         
         self.topRatedNavigationController.tabBarItem = UITabBarItem(title: "Top Rated", image: UIImage(systemName: "star"), selectedImage: UIImage(systemName: "star.fill"))
-        self.tabBarController.addChild(topRatedNavigationController)
+        self.tabBarController.addChild(self.topRatedNavigationController)
     }
     
     func start() {
