@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 final class MovieDetailsViewModel: ObservableObject {
     @Published var isFavorite: Bool = false
     let brief: MovieBriefViewModel
@@ -27,10 +28,9 @@ final class MovieDetailsViewModel: ObservableObject {
     }
     
     func toggleFavorite() async {
-        if isFavorite {
-            await favoritesService.removeFromFavorites(id: entity.id)
-        } else {
-            await favoritesService.saveToFavorites(movie: entity)
+        let success = isFavorite ? await favoritesService.removeFromFavorites(id: entity.id) : await favoritesService.saveToFavorites(movie: entity)
+        if success {
+            isFavorite.toggle()
         }
     }
 }

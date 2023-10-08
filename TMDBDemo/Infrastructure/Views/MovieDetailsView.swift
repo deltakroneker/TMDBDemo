@@ -9,7 +9,7 @@ import SwiftUI
 import Kingfisher
 
 struct MovieDetailsView: View {
-    let viewModel: MovieDetailsViewModel
+    @ObservedObject var viewModel: MovieDetailsViewModel
     
     var body: some View {
         ScrollView {
@@ -27,7 +27,7 @@ struct MovieDetailsView: View {
                 
                 LinearGradient(colors: [.clear, .black], startPoint: .top, endPoint: .bottom)
                 
-                HStack {
+                HStack(alignment: .bottom) {
                     VStack(alignment: .leading) {
                         Spacer()
                         Text(viewModel.brief.subtitle)
@@ -44,15 +44,30 @@ struct MovieDetailsView: View {
                             .font(.headline)
                             .bold()
                     }
+                    .padding()
+                    
                     Spacer()
+                    
+                    VStack {
+                        Button(action: {
+                            Task {
+                                await viewModel.toggleFavorite()
+                            }
+                        }) {
+                            Image(systemName: viewModel.isFavorite ? "heart.fill" : "heart")
+                                .resizable()
+                                .frame(width: 40, height: 40)
+                                .tint(.pink)
+                        }
+                    }
+                    .padding()
                 }
-                .padding(8)
             }
             Text(viewModel.description)
                 .font(.body)
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .foregroundColor(.gray)
-                .padding(8)
+                .padding()
         }
     }
 }

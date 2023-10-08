@@ -25,7 +25,7 @@ class iOSSwiftUIViewControllerFactory: ViewControllerFactory {
         return UIHostingController(rootView: view)
     }
     
-    func movieDetailsScreen(movie: Movie) -> UIViewController {
+    @MainActor func movieDetailsScreen(movie: Movie) -> UIViewController {
         let favoritesService = FavoritesService(store: CoreDataFavoriteMovieStore())
         let viewModel = MovieDetailsViewModel(movie: movie, favoritesService: favoritesService)
         let view = MovieDetailsView(viewModel: viewModel)
