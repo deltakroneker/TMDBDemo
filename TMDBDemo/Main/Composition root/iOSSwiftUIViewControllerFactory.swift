@@ -20,11 +20,19 @@ class iOSSwiftUIViewControllerFactory: ViewControllerFactory {
         let loader: PaginatedMovieLoader = MainQueueDispatchDecorator(
             TMDBRemoteTopRatedMovieLoader(client: iOSSwiftUIViewControllerFactory.createAuthenticatedHTTPClient(), genresService: genresService)
         )
-        let viewModel = TopRatedViewModel(loader: loader, movieTapAction: { _ in print("Movie tapped!") })
+        let viewModel = TopRatedViewModel(loader: loader, movieTapAction: movieTapAction)
         let view = TopRatedView(viewModel: viewModel)
         return UIHostingController(rootView: view)
     }
+    
+    func movieDetailsScreen(movie: Movie, toggleFavouriteAction: @escaping (Movie) -> Void) -> UIViewController {
+        let viewModel = MovieDetailsViewModel(movie: movie, toggleFavouriteAction: toggleFavouriteAction)
+        let view = MovieDetailsView(viewModel: viewModel)
+        return UIHostingController(rootView: view)
+    }
 }
+
+// MARK: AuthenticatedHTTPClientDecorator extension
 
 extension iOSSwiftUIViewControllerFactory {
     static func createAuthenticatedHTTPClient() -> HTTPClient {
@@ -32,6 +40,8 @@ extension iOSSwiftUIViewControllerFactory {
         return AuthenticatedHTTPClientDecorator(httpClient: URLSession.shared, apiKey: apiKey)
     }
 }
+
+// MARK: MainQueueDispatchDecorator extensions
 
 extension MainQueueDispatchDecorator: PaginatedMovieLoader where T == PaginatedMovieLoader {
     func load(page: Int) -> AnyPublisher<[Movie], Error> {

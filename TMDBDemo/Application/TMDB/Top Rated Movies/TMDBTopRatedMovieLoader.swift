@@ -26,7 +26,9 @@ class TMDBRemoteTopRatedMovieLoader: PaginatedMovieLoader {
                           name: dto.title,
                           genres: dto.genreIds.map({ Genre(id: $0, name: self.genresService.genreTitle(for: $0)) }),
                           poster: dto.posterPath,
-                          rating: dto.voteAverage)
+                          rating: dto.voteAverage,
+                          description: dto.overview
+                    )
                 }
             })
             .eraseToAnyPublisher()

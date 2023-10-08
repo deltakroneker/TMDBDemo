@@ -13,4 +13,5 @@ struct Movie {
     let genres: [Genre]
     let poster: String
     let rating: Double
+    let description: String
 }

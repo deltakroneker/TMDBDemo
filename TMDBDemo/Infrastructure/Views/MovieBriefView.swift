@@ -25,7 +25,6 @@ struct MovieBriefView: View {
                 .frame(minWidth: 0, maxWidth: .infinity)
             
             LinearGradient(colors: [.clear, .black], startPoint: .top, endPoint: .bottom)
-                .clipped()
             
             HStack {
                 VStack(alignment: .leading) {

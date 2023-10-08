@@ -20,6 +20,9 @@ struct TopRatedView: View {
                 LazyVGrid(columns: twoColumnGridLayout, spacing: 10) {
                     ForEach(viewModel.movies, id: \.self) { movie in
                         MovieBriefView(viewModel: MovieBriefViewModel(movie: movie))
+                            .onTapGesture {
+                                viewModel.movieTapped(movie: movie)
+                            }
                             .onAppear {
                                 viewModel.movieAppeared(movie)
                             }
