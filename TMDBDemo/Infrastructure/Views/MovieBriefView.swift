@@ -1,5 +1,5 @@
 //
-//  MoviePosterView.swift
+//  MovieBriefView.swift
 //  TMDBDemo
 //
 //  Created by nikolamilic on 10/7/23.
@@ -8,8 +8,8 @@
 import SwiftUI
 import Kingfisher
 
-struct MoviePosterView: View {
-    let viewModel: MoviePosterViewModel
+struct MovieBriefView: View {
+    let viewModel: MovieBriefViewModel
     
     var body: some View {
         ZStack {
@@ -51,9 +51,9 @@ struct MoviePosterView: View {
     }
 }
 
-struct MoviePosterView_Previews: PreviewProvider {
+struct MovieBriefView_Previews: PreviewProvider {
     static var previews: some View {
-        MoviePosterView(viewModel: MoviePosterViewModel(movie: PreviewContentFakeData.movies().first!))
+        MovieBriefView(viewModel: MovieBriefViewModel(movie: PreviewContentFakeData.movies().first!))
             .previewLayout(.sizeThatFits)
     }
 }

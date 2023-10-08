@@ -19,7 +19,7 @@ struct TopRatedView: View {
             ScrollView {
                 LazyVGrid(columns: twoColumnGridLayout, spacing: 10) {
                     ForEach(viewModel.movies, id: \.self) { movie in
-                        MoviePosterView(viewModel: MoviePosterViewModel(movie: movie))
+                        MovieBriefView(viewModel: MovieBriefViewModel(movie: movie))
                             .onAppear {
                                 viewModel.movieAppeared(movie)
                             }

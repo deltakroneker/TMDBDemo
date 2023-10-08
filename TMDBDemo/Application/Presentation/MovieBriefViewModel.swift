@@ -1,5 +1,5 @@
 //
-//  MoviePosterViewModel.swift
+//  MovieBriefViewModel.swift
 //  TMDBDemo
 //
 //  Created by nikolamilic on 10/7/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MoviePosterViewModel {
+struct MovieBriefViewModel {
     let id: Int
     let title: String
     let subtitle: String
