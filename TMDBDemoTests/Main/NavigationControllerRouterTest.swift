@@ -129,7 +129,7 @@ final class NavigationControllerRouterTest: XCTestCase {
         
         func movieSearchScreen(movieTapAction: @escaping (TMDBDemo.Movie) -> Void) -> UIViewController {
             self.movieTapActionOnMovieSearchVC = movieTapAction
-            return stubbedTopRatedMoviesVC ?? UIViewController()
+            return stubbedMovieSearchVC ?? UIViewController()
         }
     }
 }
