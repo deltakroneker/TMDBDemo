@@ -38,6 +38,15 @@ class iOSSwiftUIViewControllerFactory: ViewControllerFactory {
         let view = FavoriteMoviesView(viewModel: viewModel)
         return UIHostingController(rootView: view)
     }
+    
+    func movieSearchScreen(movieTapAction: @escaping (Movie) -> Void) -> UIViewController {
+        let searcher: PaginatedMovieSearcher = MainQueueDispatchDecorator(
+            TMDBMovieSearcher(client: iOSSwiftUIViewControllerFactory.createAuthenticatedHTTPClient(),genresService: genresService)
+        )
+        let viewModel = MovieSearchViewModel(searcher: searcher, movieTapAction: movieTapAction)
+        let view = MovieSearchView(viewModel: viewModel)
+        return UIHostingController(rootView: view)
+    }
 }
 
 // MARK: AuthenticatedHTTPClientDecorator extension
@@ -62,6 +71,14 @@ extension MainQueueDispatchDecorator: PaginatedMovieLoader where T == PaginatedM
 extension MainQueueDispatchDecorator: GenreLoader where T == GenreLoader {
     func loadAll() -> AnyPublisher<[Genre], Error> {
         return decoratee.loadAll()
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
+    }
+}
+
+extension MainQueueDispatchDecorator: PaginatedMovieSearcher where T == PaginatedMovieSearcher {
+    func search(query: String, page: Int) -> AnyPublisher<[Movie], Error> {
+        return decoratee.search(query: query, page: page)
             .receive(on: DispatchQueue.main)
             .eraseToAnyPublisher()
     }

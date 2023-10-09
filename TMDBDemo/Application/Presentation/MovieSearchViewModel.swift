@@ -14,6 +14,7 @@ final class MovieSearchViewModel: ObservableObject {
     var isPerformSearchDisabled: Bool { queryText.isEmpty }
     var isLoadingNewPage: Bool = false
     private var page = 1
+    private var lastQuery: String = ""
     private let searcher: PaginatedMovieSearcher
     private let movieTapAction: (Movie) -> Void
     private var bag = Set<AnyCancellable>()
@@ -22,15 +23,29 @@ final class MovieSearchViewModel: ObservableObject {
         self.searcher = searcher
         self.movieTapAction = movieTapAction
     }
+
+    func movieAppeared(_ movie: Movie) {
+        let thresholdIndex = movies.index(movies.endIndex, offsetBy: -1)
+        if movies[thresholdIndex] == movie {
+            performSearch()
+        }
+    }
     
     func performSearch() {
         guard !isPerformSearchDisabled else {
+            clearSearchResults()
             return
         }
         guard !isLoadingNewPage else {
             return
         }
         isLoadingNewPage = true
+        
+        if self.lastQuery != self.queryText {
+            self.movies = []
+            self.page = 1
+            self.lastQuery = self.queryText
+        }
         
         searcher.search(query: queryText, page: page)
             .sink(receiveCompletion: { [weak self] completion in
@@ -52,6 +67,7 @@ final class MovieSearchViewModel: ObservableObject {
     func clearSearchResults() {
         self.movies = []
         self.queryText = ""
+        self.lastQuery = ""
         self.page = 1
     }
 }

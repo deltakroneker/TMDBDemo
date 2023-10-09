@@ -92,6 +92,9 @@ final class NavigationControllerRouterTest: XCTestCase {
         private var stubbedFavoriteMoviesVC: UIViewController?
         var movieTapActionOnFavoriteMoviesVC: ((Movie) -> Void)?
         
+        private var stubbedMovieSearchVC: UIViewController?
+        var movieTapActionOnMovieSearchVC: ((Movie) -> Void)?
+        
         func stubTopRatedMoviesVC(with viewController: UIViewController) {
             stubbedTopRatedMoviesVC = viewController
         }
@@ -102,6 +105,10 @@ final class NavigationControllerRouterTest: XCTestCase {
         
         func stubFavoriteMoviesVC(with viewController: UIViewController) {
             stubbedFavoriteMoviesVC = viewController
+        }
+        
+        func stubMovieSearchVC(with viewController: UIViewController) {
+            stubbedMovieSearchVC = viewController
         }
         
         // Factory protocol
@@ -118,6 +125,11 @@ final class NavigationControllerRouterTest: XCTestCase {
         func favoriteMoviesScreen(movieTapAction: @escaping (TMDBDemo.Movie) -> Void) -> UIViewController {
             self.movieTapActionOnFavoriteMoviesVC = movieTapAction
             return stubbedFavoriteMoviesVC ?? UIViewController()
+        }
+        
+        func movieSearchScreen(movieTapAction: @escaping (TMDBDemo.Movie) -> Void) -> UIViewController {
+            self.movieTapActionOnMovieSearchVC = movieTapAction
+            return stubbedTopRatedMoviesVC ?? UIViewController()
         }
     }
 }

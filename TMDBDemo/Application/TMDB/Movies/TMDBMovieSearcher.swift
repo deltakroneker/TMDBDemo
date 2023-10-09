@@ -24,7 +24,7 @@ class TMDBMovieSearcher: PaginatedMovieSearcher {
                     Movie(id: dto.id,
                           name: dto.title,
                           genres: dto.genreIds.map({ Genre(id: $0, name: self.genresService.genreTitle(for: $0)) }),
-                          poster: dto.posterPath,
+                          poster: dto.posterPath ?? "",
                           rating: dto.voteAverage,
                           description: dto.overview
                     )

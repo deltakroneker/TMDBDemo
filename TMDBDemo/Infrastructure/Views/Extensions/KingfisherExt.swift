@@ -17,7 +17,6 @@ enum KFExt {
         } else {
             r.url?.appendQueryItem(name: "api_key", value: apiKey)
         }
-        print(r.url!)
         return r
     }
 }

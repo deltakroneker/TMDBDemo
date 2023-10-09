@@ -18,7 +18,7 @@ struct TMDBMovieDTO: Codable {
     let id: Int
     let title: String
     let genreIds: [Int]
-    let posterPath: String
+    let posterPath: String?
     let voteAverage: Double
     let overview: String
 }

@@ -25,7 +25,8 @@ enum TMDBRequestProvider {
         case .genres:
             return TMDBRequestProvider.baseURL + "/genre/movie/list"
         case .search(let q, let p):
-            return TMDBRequestProvider.baseURL + "/search/movie?query=\(q)&include_adult=false&language=en-US&page=\(p)"
+            let urlEncodedQuery = q.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+            return TMDBRequestProvider.baseURL + "/search/movie?query=\(urlEncodedQuery)&include_adult=false&language=en-US&page=\(p)"
         }
     }
     
