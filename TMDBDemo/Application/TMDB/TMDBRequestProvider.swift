@@ -7,11 +7,13 @@
 
 import Foundation
 
+typealias Query = String
 typealias Page = Int
 
 enum TMDBRequestProvider {
     case topRated(p: Page)
     case genres
+    case search(q: Query, p: Page)
     
     private static let baseURL = "https://api.themoviedb.org/3"
     private static let imageBaseURL = "https://image.tmdb.org/t/p"
@@ -22,6 +24,8 @@ enum TMDBRequestProvider {
             return TMDBRequestProvider.baseURL + "/movie/top_rated?language=en-US&page=\(p)"
         case .genres:
             return TMDBRequestProvider.baseURL + "/genre/movie/list"
+        case .search(let q, let p):
+            return TMDBRequestProvider.baseURL + "/search/movie?query=\(q)&include_adult=false&language=en-US&page=\(p)"
         }
     }
     
