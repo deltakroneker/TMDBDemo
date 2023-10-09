@@ -33,6 +33,18 @@ final class NavigationControllerRouterTest: XCTestCase {
         XCTAssertEqual(self.favoritesNavigationController.viewControllers, [favoriteMoviesVC])
     }
     
+    func test_onStart_showsMovieSearchScreenInsideThirdTabsNavigationController() {
+        let tabBarController = UITabBarController()
+        let movieSearchVC = UIViewController()
+        self.factory.stubMovieSearchVC(with: movieSearchVC)
+        let sut = NavigationControllerRouter(tabBarController, movieSearchNavigationController: self.movieSearchNavigationController, factory: self.factory, dispatchQueue: self.dispatchQueue)
+
+        sut.start()
+
+        XCTAssertEqual(tabBarController.children[2], self.movieSearchNavigationController)
+        XCTAssertEqual(self.movieSearchNavigationController.viewControllers, [movieSearchVC])
+    }
+    
     func test_onMovieTapActionWithinTopRatedMoviesScreen_pushesMovieDetailsScreenToFirstTabsNavigationController() {
         let tabBarController = UITabBarController()
         let topRatedMoviesVC = UIViewController()
@@ -63,11 +75,27 @@ final class NavigationControllerRouterTest: XCTestCase {
         XCTAssertEqual(self.favoritesNavigationController.viewControllers, [favoriteMoviesVC, movieDetailsVC])
     }
     
+    func test_onMovieTapActionWithinMovieSearchScreen_pushesMovieDetailsScreenToThirdTabsNavigationController() {
+        let tabBarController = UITabBarController()
+        let movieSearchVC = UIViewController()
+        let movieDetailsVC = UIViewController()
+        self.factory.stubMovieSearchVC(with: movieSearchVC)
+        self.factory.stubMovieDetailsVC(with: movieDetailsVC)
+        let sut = NavigationControllerRouter(tabBarController, movieSearchNavigationController: self.movieSearchNavigationController, factory: self.factory, dispatchQueue: self.dispatchQueue)
+        
+        sut.start()
+        self.factory.movieTapActionOnMovieSearchVC?(self.dummyMovie)
+        
+        XCTAssertEqual(tabBarController.children[2], self.movieSearchNavigationController)
+        XCTAssertEqual(self.movieSearchNavigationController.viewControllers, [movieSearchVC, movieDetailsVC])
+    }
+    
     // Helpers:
     
     private let factory = ViewControllerFactoryStub()
     private let topRatedNavigationController = NonAnimatedNavigationController()
     private let favoritesNavigationController = NonAnimatedNavigationController()
+    private let movieSearchNavigationController = NonAnimatedNavigationController()
     private let dispatchQueue = DispatchFake()
     private let dummyMovie = Movie(id: 0, name: "Inception", genres: [Genre(id: 3, name: "Action"), Genre(id: 4, name: "Sci-Fi")], poster: "/inception_poster.jpg", rating: 8.8, description: "Test")
     
