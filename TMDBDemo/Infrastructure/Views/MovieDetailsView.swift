@@ -74,6 +74,6 @@ struct MovieDetailsView: View {
 
 struct MovieDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        MovieDetailsView(viewModel: MovieDetailsViewModel(movie: PreviewContentFakeData.movies().first!, favoritesService: FavoritesService(store: PreviewContentMovieStore())))
+        MovieDetailsView(viewModel: MovieDetailsViewModel(movie: PreviewContentFakeData.movies().first!, favoritesService: LocalStoreFavoritesService(store: PreviewContentMovieStore())))
     }
 }

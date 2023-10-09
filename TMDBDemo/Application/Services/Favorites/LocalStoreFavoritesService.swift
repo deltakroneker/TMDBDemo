@@ -1,5 +1,5 @@
 //
-//  FavoritesService.swift
+//  LocalStoreFavoritesService.swift
 //  TMDBDemo
 //
 //  Created by nikolamilic on 10/8/23.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class FavoritesService {
+final class LocalStoreFavoritesService: FavoritesService {
     let store: MovieStore
     
     init(store: MovieStore) {
@@ -15,6 +15,7 @@ final class FavoritesService {
     }
     
     func isFavorite(id: Int) async -> Bool {
+        // TODO: Write a more optimised query within the store itself for this purpose
         return await fetchAllFavorites().first(where: { $0.id == id }) != nil
     }
     

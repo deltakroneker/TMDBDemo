@@ -9,7 +9,7 @@ import XCTest
 @testable import TMDBDemo
 
 final class NavigationControllerRouterTest: XCTestCase {
-    func test_onStart_showsTabBarControllerWithTopRatedMoviesScreenInsideNavigationController() {
+    func test_onStart_showsTopRatedMoviesScreenInsideFirstTabsNavigationController() {
         let tabBarController = UITabBarController()
         let topRatedMoviesVC = UIViewController()
         self.factory.stubTopRatedMoviesVC(with: topRatedMoviesVC)
@@ -17,11 +17,23 @@ final class NavigationControllerRouterTest: XCTestCase {
 
         sut.start()
 
-        XCTAssertEqual(tabBarController.children.first, self.topRatedNavigationController)
+        XCTAssertEqual(tabBarController.children[0], self.topRatedNavigationController)
         XCTAssertEqual(self.topRatedNavigationController.viewControllers, [topRatedMoviesVC])
     }
     
-    func test_onMovieTapAction_pushesMovieDetailsScreenToNavigationController() {
+    func test_onStart_showsFavoriteMoviesScreenInsideSecondTabsNavigationController() {
+        let tabBarController = UITabBarController()
+        let favoriteMoviesVC = UIViewController()
+        self.factory.stubFavoriteMoviesVC(with: favoriteMoviesVC)
+        let sut = NavigationControllerRouter(tabBarController, favoritesNavigationController: self.favoritesNavigationController, factory: self.factory, dispatchQueue: self.dispatchQueue)
+
+        sut.start()
+
+        XCTAssertEqual(tabBarController.children[1], self.favoritesNavigationController)
+        XCTAssertEqual(self.favoritesNavigationController.viewControllers, [favoriteMoviesVC])
+    }
+    
+    func test_onMovieTapActionWithinTopRatedMoviesScreen_pushesMovieDetailsScreenToFirstTabsNavigationController() {
         let tabBarController = UITabBarController()
         let topRatedMoviesVC = UIViewController()
         let movieDetailsVC = UIViewController()
@@ -30,16 +42,32 @@ final class NavigationControllerRouterTest: XCTestCase {
         let sut = NavigationControllerRouter(tabBarController, topRatedNavigationController: self.topRatedNavigationController, factory: self.factory, dispatchQueue: self.dispatchQueue)
         
         sut.start()
-        self.factory.movieTapAction?(self.dummyMovie)
+        self.factory.movieTapActionOnTopRatedMoviesVC?(self.dummyMovie)
         
         XCTAssertEqual(tabBarController.children.first, self.topRatedNavigationController)
         XCTAssertEqual(self.topRatedNavigationController.viewControllers, [topRatedMoviesVC, movieDetailsVC])
+    }
+    
+    func test_onMovieTapActionWithinFavoriteMoviesScreen_pushesMovieDetailsScreenToSecondTabsNavigationController() {
+        let tabBarController = UITabBarController()
+        let favoriteMoviesVC = UIViewController()
+        let movieDetailsVC = UIViewController()
+        self.factory.stubFavoriteMoviesVC(with: favoriteMoviesVC)
+        self.factory.stubMovieDetailsVC(with: movieDetailsVC)
+        let sut = NavigationControllerRouter(tabBarController, favoritesNavigationController: self.favoritesNavigationController, factory: self.factory, dispatchQueue: self.dispatchQueue)
+        
+        sut.start()
+        self.factory.movieTapActionOnFavoriteMoviesVC?(self.dummyMovie)
+        
+        XCTAssertEqual(tabBarController.children[1], self.favoritesNavigationController)
+        XCTAssertEqual(self.favoritesNavigationController.viewControllers, [favoriteMoviesVC, movieDetailsVC])
     }
     
     // Helpers:
     
     private let factory = ViewControllerFactoryStub()
     private let topRatedNavigationController = NonAnimatedNavigationController()
+    private let favoritesNavigationController = NonAnimatedNavigationController()
     private let dispatchQueue = DispatchFake()
     private let dummyMovie = Movie(id: 0, name: "Inception", genres: [Genre(id: 3, name: "Action"), Genre(id: 4, name: "Sci-Fi")], poster: "/inception_poster.jpg", rating: 8.8, description: "Test")
     
@@ -57,9 +85,12 @@ final class NavigationControllerRouterTest: XCTestCase {
     
     private class ViewControllerFactoryStub: ViewControllerFactory {
         private var stubbedTopRatedMoviesVC: UIViewController?
-        var movieTapAction: ((Movie) -> Void)?
+        var movieTapActionOnTopRatedMoviesVC: ((Movie) -> Void)?
         
         private var stubbedMovieDetailsVC: UIViewController?
+        
+        private var stubbedFavoriteMoviesVC: UIViewController?
+        var movieTapActionOnFavoriteMoviesVC: ((Movie) -> Void)?
         
         func stubTopRatedMoviesVC(with viewController: UIViewController) {
             stubbedTopRatedMoviesVC = viewController
@@ -69,15 +100,24 @@ final class NavigationControllerRouterTest: XCTestCase {
             stubbedMovieDetailsVC = viewController
         }
         
+        func stubFavoriteMoviesVC(with viewController: UIViewController) {
+            stubbedFavoriteMoviesVC = viewController
+        }
+        
         // Factory protocol
         
         func topRatedMoviesScreen(movieTapAction: @escaping (Movie) -> Void) -> UIViewController {
-            self.movieTapAction = movieTapAction
+            self.movieTapActionOnTopRatedMoviesVC = movieTapAction
             return stubbedTopRatedMoviesVC ?? UIViewController()
         }
         
         func movieDetailsScreen(movie: Movie) -> UIViewController {
             return stubbedMovieDetailsVC ?? UIViewController()
+        }
+        
+        func favoriteMoviesScreen(movieTapAction: @escaping (TMDBDemo.Movie) -> Void) -> UIViewController {
+            self.movieTapActionOnFavoriteMoviesVC = movieTapAction
+            return stubbedFavoriteMoviesVC ?? UIViewController()
         }
     }
 }

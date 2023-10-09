@@ -26,9 +26,16 @@ class iOSSwiftUIViewControllerFactory: ViewControllerFactory {
     }
     
     @MainActor func movieDetailsScreen(movie: Movie) -> UIViewController {
-        let favoritesService = FavoritesService(store: CoreDataFavoriteMovieStore())
-        let viewModel = MovieDetailsViewModel(movie: movie, favoritesService: favoritesService)
+        let favService = LocalStoreFavoritesService(store: CoreDataFavoriteMovieStore())
+        let viewModel = MovieDetailsViewModel(movie: movie, favoritesService: favService)
         let view = MovieDetailsView(viewModel: viewModel)
+        return UIHostingController(rootView: view)
+    }
+    
+    @MainActor func favoriteMoviesScreen(movieTapAction: @escaping (Movie) -> Void) -> UIViewController {
+        let favService = LocalStoreFavoritesService(store: CoreDataFavoriteMovieStore())
+        let viewModel = FavoriteMoviesViewModel(favoritesService: favService, movieTapAction: movieTapAction)
+        let view = FavoriteMoviesView(viewModel: viewModel)
         return UIHostingController(rootView: view)
     }
 }
