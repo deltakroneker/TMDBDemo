@@ -10,12 +10,12 @@ import SwiftUI
 struct FavoriteMoviesView: View {
     @ObservedObject var viewModel: FavoriteMoviesViewModel
     
-    private let twoColumnGridLayout = [GridItem(.flexible()), GridItem(.flexible())]
+    private let adaptiveGridLayout = [GridItem(.adaptive(minimum: 100))]
     
     var body: some View {
         NavigationView{
             ScrollView {
-                LazyVGrid(columns: twoColumnGridLayout, spacing: 10) {
+                LazyVGrid(columns: adaptiveGridLayout, spacing: 10) {
                     ForEach(viewModel.movies, id: \.self) { movie in
                         MovieBriefView(viewModel: MovieBriefViewModel(movie: movie))
                             .onTapGesture {
